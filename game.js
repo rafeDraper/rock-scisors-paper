@@ -1,7 +1,27 @@
-
-
 let computerScore = 0;
 let playerScore = 0;
+
+// Clean UI
+
+ document.getElementById('userscore').textContent = playerScore;
+ document.getElementById('aiscore').textContent = computerScore;
+
+ document.querySelector('#papierDisp').style.display = 'none';
+ document.querySelector('#steinDisp').style.display = 'none';
+ document.querySelector('#schereDisp').style.display = 'none';
+
+ document.querySelector('#papierDispR').style.display = 'none';
+ document.querySelector('#steinDispR').style.display = 'none';
+ document.querySelector('#schereDispR').style.display = 'none';
+
+ //
+ 
+
+
+
+////////////////////////////////////////////////////////
+
+
 
 let computerPlay = () => {
     let results = ['rock', 'paper', 'scissors'];
@@ -10,46 +30,72 @@ let computerPlay = () => {
 
 }
 
-let oneRound = () => {
-    let playerSelection = prompt("Choose plase: rock, paper or scissors.").toLowerCase();
+let oneRound = (player, computer) => {
+     let playerSelection = player;
     
+    
+    let steineSchere = (document.getElementById('schereDispR').style.display = 'block') + (document.getElementById('steinDisp').style.display = 'block')
+    
+    let papierSteine = (document.getElementById('steinDispR').style.display = 'block') + (document.getElementById('papierDisp').style.display = 'block')
+    
+    let scherePapier = (document.getElementById('papierDispR').style.display = 'block') + (document.getElementById('schereDisp').style.display = 'block')
+    
+
+
     //Win solutions
-    if (playerSelection.toLowerCase() == 'rock' && computerPlay() == 'scissors') {
+    if (player == 'rock' && computer == 'scissors') {
         ++playerScore
-        return "You win! Rock beats scissors ";
-    } else if (playerSelection.toLowerCase() == 'paper' && computerPlay() == 'rock') {
+        return steineSchere.toggle;  
+       } else if (player == 'paper' && computer == 'rock') {
         ++playerScore
-        return "You win! Paper beats rock ";
-    } else if (playerSelection.toLowerCase() == 'scissors' && computerPlay() == 'paper') {
+        return papierSteine;
+    } else if (player == 'scissors' && computer == 'paper') {
         ++playerScore
-        return "You win! Scissors beats paper ";
+        return scherePapier;
     
     //Lose solutions
-    } else if (playerSelection.toLowerCase() == 'rock' && computerPlay() == 'paper') {
+    } else if (player == 'rock' && computer == 'paper') {
         ++computerScore
         return "You lose! Paper beats rock ";
-    } else if (playerSelection.toLowerCase() == 'paper' && computerPlay() == 'scissors') {
+    } else if (player == 'paper' && computer == 'scissors') {
         ++computerScore
         return "You lose! Scissors beats paper ";
-    } else if (playerSelection.toLowerCase() == 'scissors' && computerPlay() == 'rock') {
+    } else if (player == 'scissors' && computer == 'rock') {
         ++computerScore
         return "You lose! Rock beats scissors ";
 
     } else return "thats a tie"
 }
 
-let game = (i) => {
-    for (i = 0; i < 5; i++) {
-        console.log(oneRound());  
+function game(player) {
+    if (playerScore < 5 && computerScore < 5) {
+        let playerSelection = player;
+        const computerSelection = computerPlay();
+        let roundText = oneRound(playerSelection,computerSelection);
+
+    document.getElementById("userscore").textContent = playerScore;
+    document.getElementById("aiscore").textContent = computerScore;
     }
-    return whoWon();
+
+
 }
 
-    let whoWon = () => {
-        if (playerScore > computerScore) {
-            console.log("You win, with a score of: " + playerScore + " points. Against: " + computerScore + " points.")
-        } else if (playerScore === computerScore) {
-            console.log("Well... that is a tie") 
-        } else 
-        console.log ("You lose, keep trying, the computer beat you with a socre of " + computerScore + " against " + playerScore);
-    }
+
+let rockBtn = document.querySelector('#steinicon');
+let paperBtn = document.querySelector('#papiericon');
+let scissorsBtn = document.querySelector('#schereicon');
+
+//Event listeners for buttons, each pass their string into game(), 
+
+rockBtn.addEventListener('click', ()=>  {
+    game('rock');
+});
+
+paperBtn.addEventListener('click', ()=>  {
+    game('paper');
+});
+
+scissorsBtn.addEventListener('click', ()=>  {
+    game('scissors');
+});
+
