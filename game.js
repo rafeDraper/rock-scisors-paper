@@ -14,11 +14,6 @@ let playerScore = 0;
  document.querySelector('#steinDispR').style.display = 'none';
  document.querySelector('#schereDispR').style.display = 'none';
 
- //
- 
-
-
-
 ////////////////////////////////////////////////////////
 
 
@@ -45,7 +40,7 @@ let oneRound = (player, computer) => {
     //Win solutions
     if (player == 'rock' && computer == 'scissors') {
         ++playerScore
-        return steineSchere.toggle;  
+        return steineSchere;  
        } else if (player == 'paper' && computer == 'rock') {
         ++playerScore
         return papierSteine;
