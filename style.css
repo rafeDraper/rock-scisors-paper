@@ -25,13 +25,13 @@ body {
     border-style: solid;
     border-radius: 20px;
     display: grid;
-    grid-template-columns: [first] 130px [second] 92px [third] auto [fourth] 92px [fifth] 112px;
+    grid-template-columns: [first] 130px [second] 92px [third] 139px [third1] 98px [third2] 98px [third3] 98px [third4] 144px [fourth] 92px [fifth] 112px;
     grid-template-rows: [row1] 25px [row2] 119px [row3] 286px [row4] auto;
     grid-template-areas: 
     ". . . . ."
     "title title title title title"
     ". selector display display selector ."
-    ". icon1 icon2 icon3 .";
+    ". . .icon1 icon2 icon3. . .";
     grid-gap: 10px, 10px;
     
     
@@ -86,27 +86,33 @@ body {
 }
 
 
+
 .buttons {
+    padding-top: 20px;
+    display: flex;
+    justify-content: center;
     grid-column: third / fourth;
     grid-row: row4 / row4;
-    place-self: center;
-    width: 80px;
-    
-    
+
 }
 
 .choice {
-    grid-column: third / fourth;
-    grid-row: row4 / row4;
-
+    width:80px;
+    padding: 10px;
 }
+
+
 
 .pSelect {
     margin-left: 20px;
     grid-column: third / fourth;
     grid-row: row3 / row4;
     place-self: center start;
+    position: relative;
+}
 
+.pSelect > img {
+    position: absolute;
 }
 
 .pSelectR {
@@ -114,6 +120,11 @@ body {
     grid-column: third / fourth;
     grid-row: row3 / row4;
     place-self: center end;
+    position: relative;
+}
+
+.pSelectR > img {
+    position: absolute;
 }
 
 
