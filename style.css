@@ -1,16 +1,22 @@
+
+@import url('https://fonts.googleapis.com/css?family=Work+Sans:900');
+
 p {
     margin-block-start: 0;
     margin-block-end: 0
 }
 
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Work Sans';
     font-size: 15px;
-    color: rgb(248, 248, 244)
+    color: rgb(248, 248, 244);
+    display: flex;
+    justify-content: center;
 }
 
 
 .container {
+    margin-top: 80px;
     height: 600px;
     width: 1000px;
     background-color: #201F1F;
@@ -25,7 +31,7 @@ body {
     ". . . . ."
     "title title title title title"
     ". selector display display selector ."
-    ". . buttons . .";
+    ". icon1 icon2 icon3 .";
     grid-gap: 10px, 10px;
     
     
@@ -68,7 +74,7 @@ body {
 
 #punkteL, #punkteR {
     font-size: 70px;
-    font-weight: bold;
+    
 }
 
 
@@ -76,10 +82,15 @@ body {
     grid-column: third / fourth;
     grid-row: row4 / row4;
     place-self: center;
+    width: 80px;
     
     
-    
-    
+}
+
+.choice {
+    grid-column: third / fourth;
+    grid-row: row4 / row4;
+
 }
 
 .pSelect {
@@ -97,9 +108,6 @@ body {
     place-self: center end;
 }
 
-.buttons button {
-
-}
 
 .pSelect, .pSelectR {
     height: 199px;
