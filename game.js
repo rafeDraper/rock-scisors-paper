@@ -57,7 +57,9 @@ function game(player) {
 
     document.getElementById("punkteL").textContent = playerScore;
     document.getElementById("punkteR").textContent = computerScore;
-    } 
+    } else if (playerScore == 5) {
+        return 
+    }
 
 
 }
