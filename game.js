@@ -3,16 +3,8 @@ let playerScore = 0;
 
 // Clean UI
 
- document.getElementById('userscore').textContent = playerScore;
- document.getElementById('aiscore').textContent = computerScore;
-
- document.querySelector('#papierDisp').style.display = 'none';
- document.querySelector('#steinDisp').style.display = 'none';
- document.querySelector('#schereDisp').style.display = 'none';
-
- document.querySelector('#papierDispR').style.display = 'none';
- document.querySelector('#steinDispR').style.display = 'none';
- document.querySelector('#schereDispR').style.display = 'none';
+ document.getElementById('punkteL').textContent = playerScore;
+ document.getElementById('punkteR').textContent = computerScore;
 
 ////////////////////////////////////////////////////////
 
@@ -20,44 +12,39 @@ let playerScore = 0;
 
 let computerPlay = () => {
     let results = ['rock', 'paper', 'scissors'];
-    let rand = results[Math.floor(Math.random() * results.length)];
-    return rand;
+    let random = results[Math.floor(Math.random() * results.length)];
+    if (random == 'rock') {
+        return document.querySelector('#cs3').style.display = 'block', document.querySelector('#cs2').style.display = 'none', document.querySelector('#cs1').style.display = 'none', random;
+    } else if (random == 'paper') {
+        return document.querySelector('#cs1').style.display = 'block',
+        document.querySelector('#cs3').style.display = 'none', document.querySelector('#cs2').style.display = 'none', random;
+    } else if (random == 'scissors') {
+        return document.querySelector('#cs2').style.display = 'block',
+        document.querySelector('#cs3').style.display = 'none', document.querySelector('#cs1').style.display = 'none', random;
+    } 
 
 }
 
 let oneRound = (player, computer) => {
-     let playerSelection = player;
     
-    
-    let steineSchere = (document.getElementById('schereDispR').style.display = 'block') + (document.getElementById('steinDisp').style.display = 'block')
-    
-    let papierSteine = (document.getElementById('steinDispR').style.display = 'block') + (document.getElementById('papierDisp').style.display = 'block')
-    
-    let scherePapier = (document.getElementById('papierDispR').style.display = 'block') + (document.getElementById('schereDisp').style.display = 'block')
-    
-
-
     //Win solutions
     if (player == 'rock' && computer == 'scissors') {
-        ++playerScore
-        return steineSchere;  
+        ++playerScore;  
        } else if (player == 'paper' && computer == 'rock') {
-        ++playerScore
-        return papierSteine;
+        ++playerScore;
     } else if (player == 'scissors' && computer == 'paper') {
-        ++playerScore
-        return scherePapier;
+        ++playerScore;
     
     //Lose solutions
     } else if (player == 'rock' && computer == 'paper') {
-        ++computerScore
-        return "You lose! Paper beats rock ";
+        ++computerScore;
+        
     } else if (player == 'paper' && computer == 'scissors') {
-        ++computerScore
-        return "You lose! Scissors beats paper ";
+        ++computerScore;
+        
     } else if (player == 'scissors' && computer == 'rock') {
-        ++computerScore
-        return "You lose! Rock beats scissors ";
+        ++computerScore;
+        
 
     } else return "thats a tie"
 }
@@ -65,32 +52,41 @@ let oneRound = (player, computer) => {
 function game(player) {
     if (playerScore < 5 && computerScore < 5) {
         let playerSelection = player;
-        const computerSelection = computerPlay();
-        let roundText = oneRound(playerSelection,computerSelection);
+        let computerSelection = computerPlay();
+        oneRound(playerSelection,computerSelection);
 
-    document.getElementById("userscore").textContent = playerScore;
-    document.getElementById("aiscore").textContent = computerScore;
-    }
+    document.getElementById("punkteL").textContent = playerScore;
+    document.getElementById("punkteR").textContent = computerScore;
+    } 
 
 
 }
 
 
-let rockBtn = document.querySelector('#steinicon');
-let paperBtn = document.querySelector('#papiericon');
-let scissorsBtn = document.querySelector('#schereicon');
+let rockBtn = document.querySelector('#st');
+let paperBtn = document.querySelector('#p');
+let scissorsBtn = document.querySelector('#s');
 
 //Event listeners for buttons, each pass their string into game(), 
 
-rockBtn.addEventListener('click', ()=>  {
-    game('rock');
-});
-
 paperBtn.addEventListener('click', ()=>  {
     game('paper');
+    document.querySelector('#ps1').style.display = 'block';
+    document.querySelector('#ps2').style.display = 'none';
+    document.querySelector('#ps3').style.display = 'none';
 });
 
 scissorsBtn.addEventListener('click', ()=>  {
     game('scissors');
+    document.querySelector('#ps2').style.display = 'block';
+    document.querySelector('#ps1').style.display = 'none';
+    document.querySelector('#ps3').style.display = 'none';
+});
+
+rockBtn.addEventListener('click', ()=>  {
+    game('rock');
+    document.querySelector('#ps3').style.display = 'block';
+    document.querySelector('#ps2').style.display = 'none';
+    document.querySelector('#ps1').style.display = 'none';
 });
 
