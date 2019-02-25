@@ -48,10 +48,14 @@ body {
     justify-self: left;    
     letter-spacing: 10px;
     line-height: 1.1;
-    
-    
 }
 
+#rst {
+    grid-column: third2 / third3;
+    grid-row: row3 / row4;
+    place-self: center center;
+    width: 40px;
+}
 
 .deineP {
     grid-column: second / third;
@@ -60,9 +64,16 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: -1px;
-    
-  
 }
+
+#winnerL {
+    grid-column: second / third;
+    grid-row: row3 / row4;
+    place-self: end center;
+    font-size: 25px;
+    font-weight: 700;
+}
+
 
 .line, .lineR {
     width: 40px;
@@ -76,7 +87,14 @@ body {
     text-align: center;
     text-transform: uppercase;
     letter-spacing: -1px;
-    
+}
+
+#winnerR {
+    grid-column: fourth / fifth;
+    grid-row: row3 / row4;
+    place-self: end center;
+    font-size: 25px;
+    font-weight: 700;
 }
 
 #punkteL, #punkteR {
