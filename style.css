@@ -55,6 +55,7 @@ body {
     grid-row: row3 / row4;
     place-self: center center;
     width: 40px;
+    cursor: pointer;
 }
 
 .deineP {
@@ -111,6 +112,7 @@ body {
     justify-content: center;
     grid-column: third / fourth;
     grid-row: row4 / row4;
+    cursor: pointer;
 
 }
 

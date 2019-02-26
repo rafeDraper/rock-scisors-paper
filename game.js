@@ -1,13 +1,14 @@
 // Clean UI
 let computerScore = 0;
 let playerScore = 0;
+
 document.getElementById('punkteL').textContent = playerScore;
 document.getElementById('punkteR').textContent = computerScore;
 ////////////////////////////////////////////////////////
 
 //state variable if the game is still active 
 
-let gamePlaying;
+
 
 /////////////////////////////////////////////
 
@@ -51,20 +52,25 @@ let oneRound = (player, computer) => {
 };
 
 function game(player) {
-    if (playerScore < 5 && computerScore < 5) {
-        let playerSelection = player;
-        let computerSelection = computerPlay();
-        oneRound(playerSelection, computerSelection);
-
-        document.getElementById('punkteL').textContent = playerScore;
-        document.getElementById('punkteR').textContent = computerScore;
-
-        if (playerScore >= 5) {
-            return document.querySelector('#winnerL').style.display = 'block';
-        } else if (computerScore >= 5) {
-            return document.querySelector('#winnerR').style.display = 'block';
+    
+        if (playerScore < 5 && computerScore < 5) {
+            let playerSelection = player;
+            let computerSelection = computerPlay();
+            oneRound(playerSelection, computerSelection);
+    
+            document.getElementById('punkteL').textContent = playerScore;
+            document.getElementById('punkteR').textContent = computerScore;
+    
+            if (playerScore >= 5) {
+                return document.querySelector('#winnerL').style.display = 'block';
+            } else if (computerScore >= 5) {
+                return document.querySelector('#winnerR').style.display = 'block';
+            }
         }
-    }
+
+
+    
+
 };
 
 // If player wins
@@ -106,13 +112,19 @@ resetBtn.addEventListener('click', reset)
 function reset() {
     let computerScore = 0;
     let playerScore = 0;
+    gamePlaying = true;
+
+
     document.getElementById('punkteL').textContent = playerScore;
     document.getElementById('punkteR').textContent = computerScore;
     document.querySelector('#winnerL').style.display = 'none';
     document.querySelector('#winnerR').style.display = 'none';
 
-    document.querySelector('#ps2').style.display = 'block';
+    document.querySelector('#ps2').style.display = 'none';
     document.querySelector('#ps1').style.display = 'none';
     document.querySelector('#ps3').style.display = 'none';
+    document.querySelector('#cs2').style.display = 'none';
+    document.querySelector('#cs1').style.display = 'none';
+    document.querySelector('#cs3').style.display = 'none';
 
 };
